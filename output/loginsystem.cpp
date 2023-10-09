@@ -59,7 +59,7 @@ using namespace std;
     cout<<"[2] Register"<<endl;
     cout<<"[3] Exit"<<endl;
     cout<<endl;
-    cout<<"Choose an option:";
+    cout<<"Choose an option: ";
     cin>>a;
     cout<<endl;
 
