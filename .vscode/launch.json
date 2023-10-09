@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/danuc/OneDrive/Desktop/Database",
-      "program": "c:/Users/danuc/OneDrive/Desktop/Database/build/Debug/outDebug",
+      "cwd": "c:/Users/danuc/OneDrive/Desktop/Database/output",
+      "program": "c:/Users/danuc/OneDrive/Desktop/Database/output/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
