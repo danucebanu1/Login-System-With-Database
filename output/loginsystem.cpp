@@ -75,10 +75,29 @@ using namespace std;
         cout<<"Enter a password: ";
         cin>>password;
         
+        // Checks if username is available or not
+        string filename = username + ".txt";
+        ifstream file(filename);
+        if (file.is_open())
+        
+        {
+            cout<<endl;
+            cout << "Username already exists"<<endl;
+            main();
+        }
+        
+        else 
+        
+        {
+        
         ofstream file; // Creates a file
         file.open(username + ".txt"); // Opens the file and renames it by the username that you entered
         file<<username<<endl<<password; // Saves the username and password in the fie
-        file.close();
+        file.close();  
+        
+        }
+        
+        
 
         cout<<"You succesfully created an account!"<<endl;
         cout<<endl;
