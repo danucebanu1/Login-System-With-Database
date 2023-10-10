@@ -36,7 +36,10 @@ using namespace std;
                 return true; // Returns the value 1 of the bool isLoggedIn
             }
         }
+
+        return 0;
     } 
+
     int main()
 {
     
