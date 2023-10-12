@@ -1,6 +1,9 @@
+#include <bits/stdc++.h>
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <windows.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -48,6 +51,9 @@ using namespace std;
     string un,pw;
     int a;
     
+    // Change terminal color
+    system("Color 09");
+
     // Welcome panel
     cout<<"                                                                                          ,,                                  "<<endl;
     cout<<" .M^^^bgd   mm                      `7MM          `7MM^^^Yb.              mm             *MM                                  "<<endl;
@@ -58,9 +64,9 @@ using namespace std;
     cout<<"Mb     dM   MM    8M   MM    MM       MM `Mb.       MM    ,dP^ 8M   MM    MM    8M   MM   MM.   ,M9 8M   MM  L.   I8 YM.    , "<<endl;
     cout<<"P^Ybmmd^    `Mbmo `Moo9^Yo..JMML.   .JMML. YA.    .JMMmmmdP^   `Moo9^Yo.  `Mbmo `Moo9^Yo. P^YbmdP^  `Moo9^Yo.M9mmmP^  `Mbmmd' "<<endl;
     cout<<endl;
-    cout<<"[1] Login"<<endl;
-    cout<<"[2] Register"<<endl;
-    cout<<"[3] Exit"<<endl;
+    cout<<"[1] Login       "<<endl;
+    cout<<"[2] Register    "<<endl;
+    cout<<"[3] Exit        "<<endl;
     cout<<endl;
     cout<<"Choose an option: ";
     cin>>a;
@@ -73,10 +79,12 @@ using namespace std;
     { 
         // Declaring the "do you wish to continue?" answer 
         string ans2;
-        cout<<"Enter a username: ";
-        cin>>username;
-        cout<<"Enter a password: ";
-        cin>>password;
+
+        // Declaring the minimum size of the username
+        const int maxchar = 6;
+        
+        cout<<"Enter a username: "; // Outputs to enter a username
+        cin>>username; // Input the username
         
         // Checks if username is available or not
         string filename = username + ".txt";
@@ -87,39 +95,67 @@ using namespace std;
             cout<<endl;
             cout << "Username already exists"<<endl;
             main();
+            return false;
         }
         
         else 
         
-        {
+    {
         
+        if ( username.size() < maxchar )
+        {
+            system("cls");
+            cout << "Sorry, your username must be at least " << maxchar << " characters long." << endl;
+            cout<<endl;
+            main();
+        }
+
+        else
+        {
         ofstream file; // Creates a file
         file.open(username + ".txt"); // Opens the file and renames it by the username that you entered
         file<<username<<endl<<password; // Saves the username and password in the fie
         file.close();  
-        
         }
-        
-        
 
-        cout<<"You succesfully created an account!"<<endl;
-        cout<<endl;
-        cout<<"Hello "<<username<<endl;
-        cout<<endl;
-        cout<<"You can enter in your account now,do you wish to continue?[Y/N] ";
-        cin>>ans2;
+    }
+
+        cout<<"Enter a password: "; // Outputs to enter a password
+        cin>>password; // Input the password
+
         
-        if (ans2 == "Y" or "y")
+            if (password.size() < maxchar)
+            {
+                system("cls");
+                cout<<"Your password should be at least " << maxchar << " characters long,try again." <<endl;
+                cout<<endl;
+                cout<<"Enter a password: ";
+                cin>>password;
+            }
+            else
+            {
+            cout<<"You succesfully created an account!"<<endl;
+            cout<<endl;
+            cout<<"Hello "<<username<<endl;
+            cout<<endl;
+            cout<<"You can enter in your account now,do you wish to continue?[Y/N] ";
+            cin>>ans2;
+            
         
-        {
+            if (ans2 == "Y" or "y")
+        
+            {
             main();
-        }
+            return true;
+            }
         
-        else if(ans2 == "N" or "n")
+            else if(ans2 == "N" or "n")
         
-        {
+            {
             cout<<"Thank you for using Stark's Database,see you next time";
-            system("exit");
+            main();
+            return false;
+            }
         }
 
     }
@@ -134,6 +170,7 @@ using namespace std;
            {
             cout<<endl;
             cout<<"Invalid login"<<endl;
+            system("cls");
             main();
            }
         
@@ -142,37 +179,15 @@ using namespace std;
     // Exit
     else if(a==3)
    {
-     cout<<"Are you sure you want to exit?[Y/N] ";
-     cin>>ans;
-     
-     if (ans == "Y" or "y")
-     {
-     cout<<"Thank you for using Stark's Database"<<endl;
-     system("exit");
-     }
-    
-    else if(a==3)
-    cin>>ans;
-      {
-        if (ans=="N" or "n")
-        {
-           cout<<"Welcome back"<<endl;
-           cout<<endl;
-           main();
-        }
-        else
-        {
-            cout<<"Error,there is no such option as"<<ans<<endl;
-            cout<<endl;
-        }
-      }
-   }
+     system("cls");
+     return 0;
+   } 
 
+   // If you input other option
    else
    {
-    cout<<"Error,there is no such option as "<<a<<endl;
-    cout<<endl;
+    cout<<"There is no suck option as "<<a<<endl;
+    system("cls");
     main();
    }
-
 }
